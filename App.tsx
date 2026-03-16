@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import CategoriesScreen from 'screens/Categories';
+
+const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.screensContainer} >
-        <StatusBar style="light" />
-        <CategoriesScreen/>
-      </SafeAreaView> 
-    </SafeAreaProvider>
+    <NavigationContainer>
+        <StatusBar/>
+        <Stack.Navigator>
+          <Stack.Screen name="Categories" component={CategoriesScreen} />
+        </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -23,7 +25,6 @@ const styles = StyleSheet.create({
   },
   screensContainer: {
     flex:1,
-    padding:8,
     backgroundColor: '#24180f',
   },
 });
