@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import CategoriesScreen from 'screens/Categories';
 
 
 export default function App() {
@@ -8,7 +9,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.screensContainer} >
-        <Text>App</Text>
+        <CategoriesScreen/>
       </SafeAreaView> 
     </SafeAreaProvider>
   );
