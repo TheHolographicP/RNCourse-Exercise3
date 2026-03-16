@@ -2,10 +2,17 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import type Category from "models/category";
 import LAYOUT from "constants/layout";
 
+interface CategoryGridTileProps {
+    category: Category,
+    onPress: () => void,
+}
 
-function CategoryGridTile({category}: {category: Category}) {
+function CategoryGridTile({category, onPress}: CategoryGridTileProps) {
     return <View style={styles.gridItem}>
-        <Pressable style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}>
+        <Pressable
+            style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}
+            onPress={onPress}
+        >
             <View style={[styles.innerContainer, {backgroundColor: category.color}]}>
                 <Text style={styles.itemText}>{category.title}</Text>
             </View>
