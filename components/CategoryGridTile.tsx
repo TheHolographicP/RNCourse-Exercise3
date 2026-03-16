@@ -5,7 +5,7 @@ import LAYOUT from "constants/layout";
 
 function CategoryGridTile({category}: {category: Category}) {
     return <View style={styles.gridItem}>
-        <Pressable style={styles.button}>
+        <Pressable style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}>
             <View style={[styles.innerContainer, {backgroundColor: category.color}]}>
                 <Text style={styles.itemText}>{category.title}</Text>
             </View>
@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
+    },
+    buttonPressed: {
+        opacity: 0.8,
     },
     innerContainer: {
         flex: 1,
