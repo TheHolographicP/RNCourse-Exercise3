@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import { AffordabilityPill, ComplexityPill, TextPill } from './MealItemFields';
+import { AffordabilityPill, ComplexityPill, DurationPill, TextPill } from 'components/MealItem/MealItemFields';
+import { MealIngredients } from 'components/MealItem/MealIngredients';
+import { MealInstructions } from 'components/MealItem/MealInstructions';
 
 import LAYOUT from 'constants/layout';
 import Colors from 'constants/colors';
@@ -26,7 +28,7 @@ function MealItem({ meal }: { meal: Meal }) {
     
     return (
         <View style={styles.itemContainer}>
-            <Text>{meal.title}</Text>
+            <Text style={styles.mealTitle}>{meal.title}</Text>
 
             <View style={styles.bodyContainer}>
                 <View style={styles.imageContainer}>
@@ -36,12 +38,15 @@ function MealItem({ meal }: { meal: Meal }) {
                 <View style={styles.leftHandPillsContainer}>
                     <AffordabilityPill affordability={meal.affordability} />
                     <ComplexityPill complexity={meal.complexity} />
-                    <TextPill text={`${meal.duration}m`} />
+                    <DurationPill number={meal.duration} />
                 </View>
                 <View style={styles.rightHandPillsContainer}>
                     {conditionalPills}
                 </View>
+
             </View>
+            <MealIngredients ingredients={meal.ingredients} />
+            <MealInstructions instructions={meal.steps} />
 
         </View>
     );
@@ -52,6 +57,11 @@ const styles = StyleSheet.create({
         flex:1,
         borderRadius: LAYOUT.borderRadius,
         backgroundColor: Colors.primary4,
+        padding: LAYOUT.padding,
+    },
+    mealTitle:{
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     bodyContainer:{
         width: '100%',
@@ -59,10 +69,12 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         flex:1,
+        borderRadius: LAYOUT.borderRadius,
     },
     imageUnderlay: {
         ...StyleSheet.absoluteFillObject,
         backgroundColor: 'rgba(0,0,0,0.3)',
+        borderRadius: LAYOUT.borderRadius,
     },
     leftHandPillsContainer: {
         position: 'absolute',
