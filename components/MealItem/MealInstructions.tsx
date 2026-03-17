@@ -1,8 +1,5 @@
-import { Text, View, StyleSheet, FlatList } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { Text, View, StyleSheet } from 'react-native';
 
-import { Affordability, Complexity } from 'models/meal';
-import Colors from 'constants/colors';
 import LAYOUT from 'constants/layout';
 
 
@@ -31,15 +28,12 @@ export function MealInstructions({ instructions }: { instructions: string[] }) {
     return (
         <View style={styles.instructionsContainer}>
             <Text style={styles.instructionsTitle}>Instructions</Text>
-            <FlatList
-                data={instructions}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item, index }) => (
-                    <View style={styles.instructionItem}>
-                        <Text style={styles.instructionText}>{`${index + 1}. ${item}`}</Text>
-                    </View>
-                )}
-            />
+            
+            {instructions.map((item, index) => (
+                <View key={index} style={styles.instructionItem}>
+                    <Text style={styles.instructionText}>{`${index + 1}. ${item}`}</Text>
+                </View>
+            ))}
         </View>
     );
 }

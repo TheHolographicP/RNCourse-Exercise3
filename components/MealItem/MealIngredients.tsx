@@ -1,7 +1,6 @@
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { Affordability, Complexity } from 'models/meal';
 import Colors from 'constants/colors';
 import LAYOUT from 'constants/layout';
 
@@ -31,16 +30,12 @@ export function MealIngredients({ ingredients }: { ingredients: string[] }) {
     return (
         <View style={styles.ingredientsContainer}>
             <Text style={styles.ingredientsTitle}>Ingredients</Text>
-            <FlatList
-                data={ingredients}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
-                    <View style={styles.ingredientItem}>
-                        <Ionicons name="checkmark-circle" size={16} color={Colors.primary1} />
-                        <Text style={styles.ingredientText}>{item}</Text>
-                    </View>
-                )}
-            />
+            {ingredients.map((item, index) => (
+                <View key={index} style={styles.ingredientItem}>
+                    <Ionicons name="checkmark-circle" size={16} color={Colors.primary1} />
+                    <Text style={styles.ingredientText}>{item}</Text>
+                </View>
+            ))}
         </View>
     );
 }
