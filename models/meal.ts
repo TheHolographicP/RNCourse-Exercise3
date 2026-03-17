@@ -1,6 +1,6 @@
 
 
-class Meal {
+export class Meal {
   id: string;
   categoryIds: string[];
   title: string;
@@ -46,4 +46,14 @@ class Meal {
   }
 }
 
-export default Meal;
+export enum Complexity {
+  Simple = 'simple',
+  Challenging = 'challenging',
+  Hard = 'hard'
+}
+
+export enum Affordability {
+  Affordable = 'affordable',
+  Pricey = 'pricey',
+  Luxurious = 'luxurious'
+}

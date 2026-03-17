@@ -1,5 +1,5 @@
 import Category from 'models/category';
-import Meal from 'models/meal';
+import { Meal, Affordability, Complexity }from 'models/meal';
 
 export const CATEGORIES = [
   new Category('c1', 'Italian', '#f5428d'),
@@ -19,8 +19,8 @@ export const MEALS = [
     'm1',
     ['c1', 'c2'],
     'Spaghetti with Tomato Sauce',
-    'affordable',
-    'simple',
+    Affordability.Affordable,
+    Complexity.Simple,
     'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
     20,
     [
@@ -50,8 +50,8 @@ export const MEALS = [
     'm2',
     ['c2'],
     'Toast Hawaii',
-    'affordable',
-    'simple',
+    Affordability.Affordable,
+    Complexity.Simple,
     'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
     10,
     [
@@ -76,8 +76,8 @@ export const MEALS = [
     'm3',
     ['c3'],
     'Classic Hamburger',
-    'pricey',
-    'simple',
+    Affordability.Pricey,
+    Complexity.Simple,
     'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg',
     45,
     [
@@ -105,8 +105,8 @@ export const MEALS = [
     'm4',
     ['c4'],
     'Wiener Schnitzel',
-    'luxurious',
-    'challenging',
+    Affordability.Luxurious,
+    Complexity.Challenging,
     'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
     60,
     [
@@ -138,8 +138,8 @@ export const MEALS = [
     'm5',
     ['c2', 'c5', 'c10'],
     'Salad with Smoked Salmon',
-    'luxurious',
-    'simple',
+    Affordability.Luxurious,
+    Complexity.Simple,
     'https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg',
     15,
     [
@@ -170,8 +170,8 @@ export const MEALS = [
     'm6',
     ['c6', 'c10'],
     'Delicious Orange Mousse',
-    'affordable',
-    'hard',
+    Affordability.Affordable,
+    Complexity.Hard,
     'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
     240,
     [
@@ -203,8 +203,8 @@ export const MEALS = [
     'm7',
     ['c7'],
     'Pancakes',
-    'affordable',
-    'simple',
+    Affordability.Affordable,
+    Complexity.Simple,
     'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
     20,
     [
@@ -232,8 +232,8 @@ export const MEALS = [
     'm8',
     ['c8'],
     'Creamy Indian Chicken Curry',
-    'pricey',
-    'challenging',
+    Affordability.Pricey,
+    Complexity.Challenging,
     'https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg',
     35,
     [
@@ -263,8 +263,8 @@ export const MEALS = [
     'm9',
     ['c9'],
     'Chocolate Souffle',
-    'affordable',
-    'hard',
+    Affordability.Affordable,
+    Complexity.Hard,
     'https://cdn.pixabay.com/photo/2014/08/07/21/07/souffle-412785_1280.jpg',
     45,
     [
@@ -309,8 +309,8 @@ export const MEALS = [
     'm10',
     ['c2', 'c5', 'c10'],
     'Asparagus Salad with Cherry Tomatoes',
-    'luxurious',
-    'simple',
+    Affordability.Luxurious,
+    Complexity.Simple,
     'https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg',
     30,
     [
