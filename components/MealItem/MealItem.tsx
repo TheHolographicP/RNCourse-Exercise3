@@ -14,15 +14,15 @@ import {Complexity, type Meal} from 'models/meal';
 function MealItem({ meal }: { meal: Meal }) {
     var conditionalPills = [];
     if (meal.isGlutenFree) {
-        conditionalPills.push(<TextPill key='glutenFree' text='Gluten Free' />);
+        conditionalPills.push(<TextPill key='glutenFree' text='Gluten Free' backGroundColor={Colors.primary2} textColor='white'/>);
     }
     if (meal.isVegan) {
-        conditionalPills.push(<TextPill key='vegan' text='Vegan' />);
+        conditionalPills.push(<TextPill key='vegan' text='Vegan' backGroundColor={Colors.primary2} textColor='white' />);
     } else if (meal.isVegetarian) {
-        conditionalPills.push(<TextPill key='vegetarian' text='Vegetarian' />);
+        conditionalPills.push(<TextPill key='vegetarian' text='Vegetarian' backGroundColor={Colors.primary2} textColor='white' />);
     }
     if (meal.isLactoseFree) {
-        conditionalPills.push(<TextPill key='lactoseFree' text='Lactose Free' />);
+        conditionalPills.push(<TextPill key='lactoseFree' text='Lactose Free' backGroundColor={Colors.primary2} textColor='white' />);
     }
     
     

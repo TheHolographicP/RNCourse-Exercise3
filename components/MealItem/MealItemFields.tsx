@@ -125,7 +125,7 @@ export function DurationPill({ number }: { number: number}) {
     );
 }
 
-export function TextPill({ text, backGroundColor }: { text: string, backGroundColor?: string }) {
+export function TextPill({ text, backGroundColor, textColor }: { text: string, backGroundColor?: string, textColor?: string }) {
     var styles = StyleSheet.create({
         textContainer: {
             backgroundColor: backGroundColor || Colors.primary5,
@@ -133,11 +133,14 @@ export function TextPill({ text, backGroundColor }: { text: string, backGroundCo
             paddingVertical: LAYOUT.padding / 2,
             borderRadius: 100,
         },
+        text: {
+            color: textColor || 'black',
+        },
     });
 
     return (
         <View style={styles.textContainer}>
-            <Text>{text}</Text>
+            <Text style={styles.text}>{text}</Text>
         </View>
     );
 }
