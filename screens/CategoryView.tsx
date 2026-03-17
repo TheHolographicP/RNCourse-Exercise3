@@ -1,22 +1,29 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList,StyleSheet, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from 'types/navigation';
 
 import { MEALS } from 'data/dummy-data'
 
-import MealItem from 'components/MealItem/MealItem';
+import {MealItem} from 'components/MealItem/MealItem';
 import type {Meal} from 'models/meal';
 import LAYOUT from 'constants/layout';
+import Colors from 'constants/colors';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CategoryView'>;
 
-function CategoryView({ route }: Props) {
+function CategoryView({ route, navigation }: Props) {
     const { categoryId } = route.params;
 
     const displayedMeals = MEALS.filter((meal) => meal.categoryIds.indexOf(categoryId) >= 0);
 
     function renderMealItem(itemData: { item: Meal }) {
-        return <MealItem meal={itemData.item} />
+        return <View style={styles.itemContainer}>
+            <Pressable onPress={() => {
+                navigation.navigate('MealView', { mealId: itemData.item.id });
+            }}>
+                <MealItem meal={itemData.item} />
+            </Pressable>
+        </View>
     }
 
     function renderSeparator() {
@@ -35,5 +42,16 @@ function CategoryView({ route }: Props) {
         </View>
     );
 }
+
+
+
+const styles = StyleSheet.create({
+    itemContainer:{
+        flex:1,
+        borderRadius: LAYOUT.borderRadius,
+        backgroundColor: Colors.primary4,
+        padding: LAYOUT.padding,
+    },
+});
 
 export default CategoryView;

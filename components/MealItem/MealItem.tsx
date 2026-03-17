@@ -1,7 +1,5 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import { AffordabilityPill, ComplexityPill, DurationPill, TextPill } from 'components/MealItem/MealItemFields';
-import { MealIngredients } from 'components/MealItem/MealIngredients';
-import { MealInstructions } from 'components/MealItem/MealInstructions';
 
 import LAYOUT from 'constants/layout';
 import Colors from 'constants/colors';
@@ -11,7 +9,7 @@ import {Complexity, type Meal} from 'models/meal';
 
 
 
-function MealItem({ meal }: { meal: Meal }) {
+export function MealItem({ meal }: { meal: Meal }) {
     var conditionalPills = [];
     if (meal.isGlutenFree) {
         conditionalPills.push(<TextPill key='glutenFree' text='Gluten Free' backGroundColor={Colors.primary2} textColor='white'/>);
@@ -27,7 +25,7 @@ function MealItem({ meal }: { meal: Meal }) {
     
     
     return (
-        <View style={styles.itemContainer}>
+        <View style={{flex: 1}}>
             <Text style={styles.mealTitle}>{meal.title}</Text>
 
             <View style={styles.bodyContainer}>
@@ -45,20 +43,11 @@ function MealItem({ meal }: { meal: Meal }) {
                 </View>
 
             </View>
-            <MealIngredients ingredients={meal.ingredients} />
-            <MealInstructions instructions={meal.steps} />
-
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    itemContainer:{
-        flex:1,
-        borderRadius: LAYOUT.borderRadius,
-        backgroundColor: Colors.primary4,
-        padding: LAYOUT.padding,
-    },
     mealTitle:{
         fontSize: 18,
         fontWeight: 'bold',
