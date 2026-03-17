@@ -8,8 +8,8 @@ export class Meal {
   ingredients: string[];
   steps: string[];
   duration: number;
-  complexity: string;
-  affordability: string;
+  complexity: Complexity;
+  affordability: Affordability;
   isGlutenFree: boolean;
   isVegan: boolean;
   isVegetarian: boolean;
@@ -19,8 +19,8 @@ export class Meal {
     id: string,
     categoryIds: string[],
     title: string,
-    affordability: string,
-    complexity: string,
+    affordability: Affordability,
+    complexity: Complexity,
     imageUrl: string,
     duration: number,
     ingredients: string[],
@@ -47,13 +47,13 @@ export class Meal {
 }
 
 export enum Complexity {
-  Simple = 'simple',
-  Challenging = 'challenging',
-  Hard = 'hard'
+  Simple = 'Simple',
+  Challenging = 'Challenging',
+  Hard = 'Hard'
 }
 
 export enum Affordability {
-  Affordable = 'affordable',
-  Pricey = 'pricey',
-  Luxurious = 'luxurious'
+  Affordable = 'Affordable',
+  Pricey = 'Pricey',
+  Luxurious = 'Luxurious'
 }
