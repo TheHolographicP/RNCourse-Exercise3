@@ -103,3 +103,20 @@ export function ComplexityPill({ complexity }: { complexity: Complexity }) {
         </View>
     );
 }
+
+export function TextPill({ text, backGroundColor }: { text: string, backGroundColor?: string }) {
+    var styles = StyleSheet.create({
+        textContainer: {
+            backgroundColor: backGroundColor || Colors.primary5,
+            paddingHorizontal: LAYOUT.padding,
+            paddingVertical: LAYOUT.padding / 2,
+            borderRadius: 100,
+        },
+    });
+
+    return (
+        <View style={styles.textContainer}>
+            <Text>{text}</Text>
+        </View>
+    );
+}
