@@ -6,6 +6,7 @@ import { MEALS } from 'data/dummy-data'
 
 import MealItem from 'components/MealItem/MealItem';
 import type {Meal} from 'models/meal';
+import LAYOUT from 'constants/layout';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CategoryView'>;
 
@@ -15,7 +16,11 @@ function CategoryView({ route }: Props) {
     const displayedMeals = MEALS.filter((meal) => meal.categoryIds.indexOf(categoryId) >= 0);
 
     function renderMealItem(itemData: { item: Meal }) {
-        return <MealItem meal={itemData.item} />;
+        return <MealItem meal={itemData.item} />
+    }
+
+    function renderSeparator() {
+        return <View style={{ height: 1, backgroundColor: '#ccc', marginVertical: LAYOUT.gap, width: '80%', alignSelf: 'center' }} />;
     }
 
     return (
@@ -25,6 +30,7 @@ function CategoryView({ route }: Props) {
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
                 renderItem={renderMealItem}
+                ItemSeparatorComponent={renderSeparator}
             />
         </View>
     );
