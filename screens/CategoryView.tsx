@@ -32,7 +32,6 @@ function CategoryView({ route, navigation }: Props) {
 
     return (
         <View>
-            <Text>{route.params.categoryId}</Text>
             <FlatList 
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
