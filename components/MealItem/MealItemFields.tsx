@@ -55,4 +55,51 @@ export function AffordabilityPill({ affordability }: { affordability: Affordabil
     );
 }
 
+export function ComplexityPill({ complexity }: { complexity: Complexity }) {
+    var styles = StyleSheet.create({
+        complexityContainer: {
+            backgroundColor: Colors.primary5,
+            paddingHorizontal: LAYOUT.padding,
+            paddingVertical: LAYOUT.padding / 2,
+            borderRadius: 100,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: LAYOUT.gap / 2,
+        },
+        cogContainer: {
+            flexDirection: 'row',
+        },
+        cogActive: {
+            color: 'black'
+        },
+        cogInactive: {
+            color: '#9d9d9d'
+        },
 
+    });
+
+    let complexityLevel = 0;
+    switch (complexity) {
+        case Complexity.Simple:
+            complexityLevel = 1;
+            break;
+        case Complexity.Challenging:
+            complexityLevel = 2;
+            break;
+        case Complexity.Hard:
+            complexityLevel = 3;
+            break;
+    }
+
+    return (
+        <View style={styles.complexityContainer}>
+            <View style={styles.cogContainer}>
+                <Ionicons name='cog' color={complexityLevel >= 1 ? 'black' : '#9d9d9d'}/>
+                <Ionicons name='cog' color={complexityLevel >= 2 ? 'black' : '#9d9d9d'}/>
+                <Ionicons name='cog' color={complexityLevel >= 3 ? 'black' : '#9d9d9d'}/>
+            </View>
+            <Text>{'\u2022'}</Text>
+            <Text>{complexity}</Text>
+        </View>
+    );
+}
