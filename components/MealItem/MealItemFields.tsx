@@ -104,6 +104,27 @@ export function ComplexityPill({ complexity }: { complexity: Complexity }) {
     );
 }
 
+export function DurationPill({ number }: { number: number}) {
+    var styles = StyleSheet.create({
+        textContainer: {
+            backgroundColor: Colors.primary5,
+            paddingHorizontal: LAYOUT.padding,
+            paddingVertical: LAYOUT.padding / 2,
+            borderRadius: 100,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: LAYOUT.gap / 2,
+        },
+    });
+
+    return (
+        <View style={styles.textContainer}>
+            <Ionicons name='time' color='black'/>
+            <Text>{number}m</Text>
+        </View>
+    );
+}
+
 export function TextPill({ text, backGroundColor }: { text: string, backGroundColor?: string }) {
     var styles = StyleSheet.create({
         textContainer: {
