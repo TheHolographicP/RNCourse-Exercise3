@@ -1,8 +1,9 @@
+import { useEffect, useLayoutEffect } from 'react';
 import { View, Text, FlatList,StyleSheet, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from 'types/navigation';
 
-import { MEALS } from 'data/dummy-data'
+import { CATEGORIES, MEALS } from 'data/dummy-data'
 
 import {MealItem} from 'components/MealItem/MealItem';
 import type {Meal} from 'models/meal';
@@ -16,11 +17,19 @@ function CategoryView({ route, navigation }: Props) {
 
     const displayedMeals = MEALS.filter((meal) => meal.categoryIds.indexOf(categoryId) >= 0);
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: CATEGORIES.find((cat) => cat.id === categoryId)?.title || 'Category',
+        });
+    }, [categoryId, navigation]);
+
     function renderMealItem(itemData: { item: Meal }) {
         return <View style={styles.itemContainer}>
             <Pressable onPress={() => {
-                navigation.navigate('MealView', { mealId: itemData.item.id });
-            }}>
+                    navigation.navigate('MealView', { mealId: itemData.item.id });
+                }}
+                style={({pressed}) => pressed ? styles.buttonPressed : null}
+            >
                 <MealItem meal={itemData.item} />
             </Pressable>
         </View>
@@ -50,6 +59,9 @@ const styles = StyleSheet.create({
         borderRadius: LAYOUT.borderRadius,
         backgroundColor: Colors.primary4,
         padding: LAYOUT.padding,
+    },
+    buttonPressed: {
+        opacity: 0.8,
     },
 });
 

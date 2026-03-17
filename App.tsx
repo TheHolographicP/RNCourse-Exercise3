@@ -29,20 +29,22 @@ export default function App() {
             headerStyle: {
               backgroundColor: Colors.primary1,
             },
+            headerTintColor: 'white',
             headerTitleStyle: headerTextStyle,
             contentStyle: contentStyle}}>
           <Stack.Screen 
             name="CategoriesList"
             component={CategoriesScreen}
-            options = {{ title: 'Categories', }}/>
+            options={{title:'Meal Categories'}}
+          />
           <Stack.Screen 
             name="CategoryView"
             component={CategoryView}
-            options = {{ title: 'Category' }}/>
+          />
           <Stack.Screen 
             name="MealView"
             component={MealView}
-            options = {{ title: 'Meal' }}/>
+          />
         </Stack.Navigator>
     </NavigationContainer>
   );

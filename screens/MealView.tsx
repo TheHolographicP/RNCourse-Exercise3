@@ -1,3 +1,4 @@
+import { useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from 'types/navigation';
@@ -12,11 +13,18 @@ import Colors from 'constants/colors';
 import {Complexity, type Meal} from 'models/meal';
 import { MEALS } from 'data/dummy-data';
 
+
 type Props = NativeStackScreenProps<RootStackParamList, 'MealView'>;
 
 export function MealView({ route, navigation }: Props) {   
     const { mealId } = route.params;
     const meal = MEALS.find((meal) => meal.id === mealId);
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: meal ? meal.title : 'Meal',
+        });
+    }, [meal, navigation]);
 
     if (!meal) {
         return (
