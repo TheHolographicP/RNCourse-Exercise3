@@ -1,11 +1,11 @@
 
 
 const Colors = {
-    primary1: '#FFC09F',
-    primary2: '#FFEE93',
-    primary3: '#FCF5C7',
-    primary4: '#A0CED9',
-    primary5: '#ADF7B6',
+    primary1: '#0D1821',
+    primary2: '#344966',
+    primary3: '#E6AACE',
+    primary4: '#F0F4EF',
+    primary5: '#BFCC94',
 }
 
 export default Colors
