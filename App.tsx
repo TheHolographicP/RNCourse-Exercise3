@@ -9,7 +9,7 @@ import CategoriesScreen from 'screens/Categories';
 import CategoryView from 'screens/CategoryView';
 import type { RootStackParamList, RootDrawerParamList } from 'types/navigation';
 import { MealView } from 'screens/MealView';
-import { Favorites } from 'screens/Favorites';
+import { FavoritesView } from 'screens/FavoritesView';
 
 import Colors from 'constants/colors';
 import { FavoritesContextProvider } from 'store/context/favorites-context';
@@ -52,9 +52,10 @@ function DrawerNavigator() {
         }}
       />
       <Drawer.Screen 
-        name="Favorites" 
-        component={Favorites} 
+        name="FavoritesView" 
+        component={FavoritesView} 
         options={{
+          title: 'Favorites',
           drawerIcon: ({color, size}) => (
             <Ionicons name="star" color={color} size={size} />
           ),
@@ -85,6 +86,7 @@ export default function App() {
             component={DrawerNavigator}
             options={{            
               headerShown: false,
+              title:'All Categories',
             }}
           />
           <Stack.Screen 

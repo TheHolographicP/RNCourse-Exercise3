@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, FlatList, Image, ScrollView } from 'react-nativ
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from 'types/navigation';
 
-import { MealIngredients } from 'components/MealItem/MealIngredients';
-import { MealInstructions } from 'components/MealItem/MealInstructions';
-import { MealItem } from 'components/MealItem/MealItem';
+import { MealIngredients } from 'components/MealList/MealItem/MealIngredients';
+import { MealInstructions } from 'components/MealList/MealItem/MealInstructions';
+import { MealItem } from 'components/MealList/MealItem/MealItem';
 import { IconButton } from 'components/IconButton';
 
 
