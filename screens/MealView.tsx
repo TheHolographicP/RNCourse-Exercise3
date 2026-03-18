@@ -6,6 +6,8 @@ import type { RootStackParamList } from 'types/navigation';
 import { MealIngredients } from 'components/MealItem/MealIngredients';
 import { MealInstructions } from 'components/MealItem/MealInstructions';
 import { MealItem } from 'components/MealItem/MealItem';
+import { IconButton } from 'components/IconButton';
+
 
 import LAYOUT from 'constants/layout';
 import Colors from 'constants/colors';
@@ -23,6 +25,14 @@ export function MealView({ route, navigation }: Props) {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: meal ? meal.title : 'Meal',
+            headerRight: () => (
+                <IconButton
+                    icon="star"
+                    color='white'
+                    onPress={() => {}}
+                />
+            ),
+
         });
     }, [meal, navigation]);
 
