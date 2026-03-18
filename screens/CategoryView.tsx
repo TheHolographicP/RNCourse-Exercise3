@@ -5,7 +5,7 @@ import type { RootStackParamList } from 'types/navigation';
 
 import { CATEGORIES, MEALS } from 'data/dummy-data'
 
-import {MealItem} from 'components/MealItem/MealItem';
+import {MealItem} from 'components/MealList/MealItem/MealItem';
 import type {Meal} from 'models/meal';
 import LAYOUT from 'constants/layout';
 import Colors from 'constants/colors';

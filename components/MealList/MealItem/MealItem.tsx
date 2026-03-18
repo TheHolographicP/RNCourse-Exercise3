@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import { AffordabilityPill, ComplexityPill, DurationPill, TextPill } from 'components/MealItem/MealItemFields';
+import { AffordabilityPill, ComplexityPill, DurationPill, TextPill } from 'components/MealList/MealItem/MealItemFields';
 
 import LAYOUT from 'constants/layout';
 import Colors from 'constants/colors';
