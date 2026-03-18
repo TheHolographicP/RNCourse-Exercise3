@@ -12,6 +12,7 @@ import { MealView } from 'screens/MealView';
 import { Favorites } from 'screens/Favorites';
 
 import Colors from 'constants/colors';
+import { FavoritesContextProvider } from 'store/context/favorites-context';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -69,6 +70,7 @@ export default function App() {
   
   return (
     <NavigationContainer>
+      <FavoritesContextProvider>
         <StatusBar style='light'/>
         <Stack.Navigator 
           screenOptions={{
@@ -94,6 +96,7 @@ export default function App() {
             component={MealView}
           />
         </Stack.Navigator>
+      </FavoritesContextProvider>
     </NavigationContainer>
   );
 }

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from 'types/navigation';
@@ -14,27 +14,41 @@ import Colors from 'constants/colors';
 
 import {Complexity, type Meal} from 'models/meal';
 import { MEALS } from 'data/dummy-data';
+import FavoritesContext from 'store/context/favorites-context';
 
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MealView'>;
 
 export function MealView({ route, navigation }: Props) {   
+    const favoriteMealsContext = useContext(FavoritesContext);
+
+    const mealIsFavorite = favoriteMealsContext.ids.includes(route.params.mealId);
+
     const { mealId } = route.params;
     const meal = MEALS.find((meal) => meal.id === mealId);
+
+    function toggleFavoriteStatusHandler() {
+        if (mealIsFavorite) {
+            favoriteMealsContext.removeFavorite(mealId);
+        } else {
+            favoriteMealsContext.addFavorite(mealId);
+        }
+    }
+
 
     useLayoutEffect(() => {
         navigation.setOptions({
             title: meal ? meal.title : 'Meal',
             headerRight: () => (
                 <IconButton
-                    icon="star"
+                    icon={mealIsFavorite ? "star" : "star-outline"}
                     color='white'
-                    onPress={() => {}}
+                    onPress={toggleFavoriteStatusHandler}
                 />
             ),
 
         });
-    }, [meal, navigation]);
+    }, [meal, navigation, mealIsFavorite]);
 
     if (!meal) {
         return (
